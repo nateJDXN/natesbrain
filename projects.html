@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Projects</title>
+        <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    <header>
+        <nav>
+            <a href = index.html>Home</a>
+        </nav>
+    </header>
+<head>
+    <title>Projects Page</title>
+    <style>
+        
+        body {
+            background-color: #0b2d39;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            background-color: transparent;
+            z-index: 2;
+        }
+        nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            padding: 20px 0;
+        }
+        .carousel {
+            position: relative;
+            height: 66vh; /* Takes up top 2/3 of the page */
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel .description {
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent */
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+        #project-description {
+            margin-top: 20px;
+        }
+
+        .arrows {
+            position: absolute;
+            top: 33%;
+            z-index: 1;
+        }
+
+        #left {
+            left: 3%
+        }
+
+        #right {
+            right: 3%
+        }
+    </style>
+</head>
+<body>
+    <section class = "arrows" id="left">
+        <button onclick="previousProject()"><i class="fa fa-arrow-left"></i></button>
+    </section>
+    <section class = "arrows" id="right">
+        <button onclick="nextProject()">Next</button>
+    </section>
+
+    <div class="carousel" id = "carousel">
+        <div class="description" id="carousel-description">Project 1 Description</div>
+    </div>
+
+    <div id="project-description">
+        Project 1 Full Description
+    </div>
+
+    <script>
+        let currentProject = 0;
+        const projects = [
+            { image: 'assets/images/eric-saunders-crUGdn1j-RE-unsplash.jpg', carouselDescription: 'Project 1 Description', fullDescription: 'Project 1 Full Description' },
+            { image: 'assets/images/laurent-perren-NeH9w4CdmnA-unsplash.jpg', carouselDescription: 'Project 2 Description', fullDescription: 'Project 2 Full Description' },
+            { image: 'assets/images/redcharlie-redcharlie1-vQVWIsIBafA-unsplash.jpg', carouselDescription: 'Project 3 Description', fullDescription: 'Project 3 Full Description' },
+        ];
+
+        function updateProject() {
+            document.getElementById('carousel').style.backgroundImage = `url(${projects[currentProject].image})`;
+            document.getElementById('carousel-description').textContent = projects[currentProject].carouselDescription;
+            document.getElementById('project-description').textContent = projects[currentProject].fullDescription;
+        }
+
+        function nextProject() {
+            currentProject = (currentProject + 1) % projects.length;
+            updateProject();
+        }
+
+        function previousProject() {
+            currentProject = (currentProject - 1 + projects.length) % projects.length;
+            updateProject();
+        }
+
+        updateProject(); //load the first image
+    </script>
+</body>
+</html>
