@@ -4,29 +4,49 @@
         <title>Projects</title>
         <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
+<body>
     <header>
         <nav>
-            <a href = index.html>Home</a>
+            <a href = index.html>
+                <img src="assets/images/logo.png">
+            </a>
         </nav>
+        <a href="https://www.linkedin.com/in/nat3dixon/" id="linkedin-button" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/linkedin.png">
+        </a>
+        <a href="https://github.com/nateJDXN" id="github-button" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/githublogo.png">
+        </a>
     </header>
-<head>
+    <div class ="main">
     <title>Projects Page</title>
     <style>
-        
+        body, ul, a {
+            margin: 0;
+            padding: 0;
+        }
         body {
-            background-color: #0b2d39;
+            background-color: #363433;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         header {
+            display: flex;
             position: fixed;
             width: 100%;
+            height: 5%;
             background-color: transparent;
-            z-index: 2;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
         }
         nav ul {
-            display: flex;
-            justify-content: space-around;
-            list-style-type: none;
-            padding: 20px 0;
+            margin-right: auto;
         }
         .carousel {
             position: relative;
@@ -46,29 +66,88 @@
         }
         #project-description {
             margin-top: 20px;
+            color: white;
+            font-size: 1.5em;
+            text-align: center;
+            padding: 10px;
+            max-width: 80%
         }
 
         .arrows {
             position: absolute;
             top: 33%;
-            z-index: 1;
+            z-index: 15;
         }
 
-        #left {
-            left: 3%
+        button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        #left button, #left img {
+            width: 20%;
+            height: auto;
+        }
+
+        #right button, #right img {
+            margin-left: 75%;
+            display: block;
+            width: 20%;
+            height: auto;
         }
 
         #right {
-            right: 3%
+            position: absolute;
+            right: 0;
         }
+
+        #left {
+            position: absolute;
+            left: 0;
+        }
+
+        a img {
+            display: block;
+            width: 30%;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 5%;
+        }
+
+        #linkedin-button {
+            width: 6%;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-150%);
+            margin-top: 1%;
+        }
+
+        #github-button {
+            width: 6%;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(50%);
+            margin-top: 1%;
+        }
+
     </style>
-</head>
-<body>
     <section class = "arrows" id="left">
-        <button onclick="previousProject()"><i class="fa fa-arrow-left"></i></button>
+        <button onclick="previousProject()">
+            <img src ="assets/images/leftarrow.png">
+        </button>
     </section>
     <section class = "arrows" id="right">
-        <button onclick="nextProject()">Next</button>
+        <button onclick="nextProject()">
+            <img src="assets/images/rightarrow.png">
+        </button>
     </section>
 
     <div class="carousel" id = "carousel">
@@ -79,12 +158,14 @@
         Project 1 Full Description
     </div>
 
-    <script>
+    </div>
+
+    <script>    
         let currentProject = 0;
         const projects = [
-            { image: 'assets/images/eric-saunders-crUGdn1j-RE-unsplash.jpg', carouselDescription: 'Project 1 Description', fullDescription: 'Project 1 Full Description' },
-            { image: 'assets/images/laurent-perren-NeH9w4CdmnA-unsplash.jpg', carouselDescription: 'Project 2 Description', fullDescription: 'Project 2 Full Description' },
-            { image: 'assets/images/redcharlie-redcharlie1-vQVWIsIBafA-unsplash.jpg', carouselDescription: 'Project 3 Description', fullDescription: 'Project 3 Full Description' },
+            { image: 'assets/images/caviar.jpg', carouselDescription: 'Caviar Connect', fullDescription: 'Caviar is a social media app designed for making parties more virtually interactive. The event host can provide a QR code or passphrase to connect to the current event. Once logged in, the user can request songs, view menus, and connect with other attendees. This was an ambitious project I started while learning Swift and the Xcode environment. I built the user authentication backend in Firebase. Currently, users can sign up or log in, and view the homepage. Some next steps for this include creating user profiles as well as connecting to the Spotify API to request songs.' },
+            { image: 'assets/images/battlecode.png', carouselDescription: 'Battlecode 2023', fullDescription: "Battlecode is MIT's premier real-time strategy game programming competition, taking place every January. Over a challenging month, my team and I dove deep into Java, crafting algorithms and strategies to control our virtual robot army. Facing off against other teams, our program had to be sharp and responsive, adapting to rival moves on the fly. This experience not only honed my coding skills but also emphasized the importance of team collaboration and strategy optimization. This was my first time participating in the challenge, so while I still have a lot to learn, I'm excited for next year to prove all that I've learned." },
+            { image: 'assets/images/discordgpt.png', carouselDescription: 'ChatGPT Discord Bot', fullDescription: "I created a Discord bot that connects to the GPT 3.5 API and allows users to use the /chat command to make queries with the bot. It's all locally hosted at the moment, so this is still in proof-of-concept stages. My next step for this project is getting the context part of the bot working, which is ChatGPT's main selling feature. Once this is working, users will find a lot of use out of this bot, especially since they will be able to use the bot without having to sign into an account." },
         ];
 
         function updateProject() {
@@ -95,11 +176,13 @@
 
         function nextProject() {
             currentProject = (currentProject + 1) % projects.length;
+            console.log("Next Project")
             updateProject();
         }
 
         function previousProject() {
             currentProject = (currentProject - 1 + projects.length) % projects.length;
+            console.log("Previous Project")
             updateProject();
         }
 

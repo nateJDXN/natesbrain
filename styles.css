@@ -3,20 +3,24 @@ body, html {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #041014;
+    background-color: #363433;
 }
 
 header {
+    display: flex;
     position: fixed;
     width: 100%;
     background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }
 
 nav ul {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
-    padding: 20px 0;
+    padding: 0;
 }
 
 main {
@@ -51,5 +55,31 @@ button {
     background: transparent;
     border: 2px solid white;
     border-radius: 6px;
-    
 }
+
+a img {
+    display: block;
+    width: 30%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+#linkedin-button {
+    width: 6%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-150%);
+    margin-top: 1%;
+}
+
+#github-button {
+    width: 6%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(50%);
+    margin-top: 1%;
+}
+
